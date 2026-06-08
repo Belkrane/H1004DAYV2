@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#FBFBFA" />
+    <!-- ③ 캐시 방지 -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!-- ════════════════════════════════════════════════════
+         Open Graph — 카카오톡 / SNS 공유 미리보기
+         ┌──────────────────────────────────────────────┐
+         │  og:image 는 반드시 절대 URL (HTTPS) 이어야   │
+         │  합니다. 아래 URL 을 실제 배포 주소로 확인    │
+         │  하고, 이미지 해상도는 1200×630px 권장.       │
+         └──────────────────────────────────────────────┘
+    ════════════════════════════════════════════════════ -->
+    <!-- 기본 OG -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="김종학 ♥ 임소현 청첩장" />
+    <meta property="og:title" content="김종학 ♥ 임소현 저희 결혼합니다" />
+    <meta
+      property="og:description"
+      content="2026년 10월 4일 14시 30분 더채플앳논현"
+    />
+    <meta property="og:url" content="https://belkrane.github.io/H1004DAY/" />
+    <!-- 썸네일 이미지 (카카오톡 미리보기 핵심) -->
+    <!-- ⚠ 이미지 파일이 실제 존재하는지 확인 후 사용 -->
+    <meta
+      property="og:image"
+      content="https://belkrane.github.io/H1004DAY/src/img/header2.PNG?v=20260606"
+    />
+    <!--
+      실제 이미지 크기(px)를 아래에 맞게 수정하세요.
+      사이즈를 명시하면 카카오톡이 레이아웃을 미리 잡아
+      로딩이 빨라집니다. 1200×630 을 권장합니다.
+    -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="김종학 & 임소현 결혼식 2026.10.04" />
+    <title>김종학 ♥ 임소현</title>
+
+    <!-- Fonts: White & Wood Theme -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Noto Sans KR   — 한글 본문 산세리프 (가독성 우수)
+      Nanum Myeongjo — 한글 세리프 포인트체 (제목·날짜·장식)
+      Great Vibes    — 고급 웨딩 캘리그래피 필기체 (hero tag)
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="style.css?v=20260606" />
+  </head>
+  <body>
+    <!-- ════════════════════════════════════════════
+         ① HERO
+    ════════════════════════════════════════════ -->
+    <section id="hero" class="hero">
+      <!-- ① 꽃잎 파티클 캔버스 (JS가 <div class="petal"> 생성) -->
+      <div class="petals-canvas" id="petals-canvas" aria-hidden="true"></div>
+
+      <!-- ── Zone ① : Tag — 먼저 등장 ── -->
+      <div class="hero__tag-zone">
+        <p class="hero__tag">We're Getting Married</p>
+      </div>
+
+      <!-- ── Zone ② : Photo — Tag 이후 등장 ── -->
+      <div class="hero__photo">
+        <img src="src/img/header.PNG?v=20260606" alt="커플 메인 사진" />
+      </div>
+
+      <!-- ── Zone ③ : Names + Date/Venue — 마지막 등장 ── -->
+      <div class="hero__body">
+        <h1 class="hero__names">
+          <span>김종학</span>
+          <em class="hero__amp">&amp;</em>
+          <span>임소현</span>
+        </h1>
+        <div class="hero__rule"></div>
+        <p class="hero__date">2026 · 10 · 04 &nbsp;<em>Sun.</em>&nbsp;14:30</p>
+        <p class="hero__venue">더채플앳논현 6F 라포레홀</p>
+      </div>
+      <a href="#greeting" class="hero__scroll" aria-label="아래로 스크롤">
+        <i data-lucide="chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         ② GREETING / 인사말
+    ════════════════════════════════════════════ -->
+    <section id="greeting" class="section section--white">
+      <div class="container reveal">
+        <header class="section-head">
+          <span class="section-tag">Invitation</span>
+          <h2>인사말</h2>
+        </header>
+
+        <div class="greeting__copy">
+          <p>
+            씨앗이 열매 맺는 가을<br />
+            저희 두 사람도 결실을 맺습니다.<br />
+          </p>
+          <p>
+            짧지 않은 인연<br />
+            노력으로 일군 과실을
+          </p>
+          <p>
+            달콤하길 축복해주시면<br />
+            더없는 기쁨이겠습니다.
+          </p>
+        </div>
+
+        <div class="greeting__family">
+          <div class="family-col">
+            <span class="family-label">신랑 측</span>
+            <p>
+              <strong>김택명</strong> · <strong>곽미희</strong>의<br />
+              장남
+              <strong>종학</strong>
+            </p>
+          </div>
+          <div class="family-divider"></div>
+          <div class="family-col">
+            <span class="family-label">신부 측</span>
+            <p>
+              <strong>임성순</strong> · <strong>안정숙</strong>의<br />
+              장녀
+              <strong>소현</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ════════════════════════════════════════════
+         ⑤ GALLERY / 갤러리
+    ════════════════════════════════════════════ -->
+    <section id="gallery" class="section section--warm">
+      <div class="container reveal">
+        <header class="section-head">
+          <span class="section-tag">Gallery</span>
+          <h2>갤러리</h2>
+        </header>
+
+        <!-- 갤러리 아이템은 script.js CONFIG.galleryImages 에서 동적 생성 -->
+        <div class="gallery__grid"></div>
+      </div>
+    </section>
+
+    <!-- Gallery Modal (JS로 제어) -->
+    <div
+      class="gallery-modal"
+      id="gallery-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="갤러리 확대 보기"
+      hidden
+    >
+      <div class="gallery-modal__backdrop"></div>
+      <button class="gallery-modal__close" aria-label="닫기">
+        <i data-lucide="x"></i>
+      </button>
+      <button class="gallery-modal__prev" aria-label="이전">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <div class="gallery-modal__stage">
+        <img src="" alt="확대 사진" id="gallery-modal-img" />
+      </div>
+      <button class="gallery-modal__next" aria-label="다음">
+        <i data-lucide="chevron-right"></i>
+      </button>
+      <p class="gallery-modal__counter" id="gallery-modal-counter"></p>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         ④ BIG DATE — 날짜 포인트
+    ════════════════════════════════════════════ -->
+    <section id="big_Date" class="section section--deep big-date-section">
+      <div class="container">
+        <div class="big-date reveal">
+          <span class="big-date__part">Oct. 4.</span>
+          <span class="big-date__part">2026</span>
+          <span class="big-date__sub"
+            >The Wedding Day &nbsp;·&nbsp; 더채플앳논현</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         ④-B DATE INFO — 날짜·장소·캘린더·카운트다운
+         (hero 섹션에서 이동)
+    ════════════════════════════════════════════ -->
+    <section id="date-info" class="date-info-section">
+      <div class="container reveal">
+        <p class="hero__date">2026 · 10 · 04 &nbsp;<em>Sun.</em>&nbsp;14:30</p>
+        <p class="hero__venue">더채플앳논현 6F 라포레홀</p>
+
+        <!-- 2026년 10월 달력 -->
+        <div class="hero__cal">
+          <p class="hero__cal-label">October · 2026</p>
+          <table
+            class="hero__cal-table"
+            role="presentation"
+            aria-label="2026년 10월 달력"
+          >
+            <thead>
+              <tr>
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th>F</th>
+                <th>S</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td><span class="cal-wedding">4</span></td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- D-Day 카운트다운 -->
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div class="countdown__col">
+            <span id="cnt-days">--</span><small>일</small>
+          </div>
+          <div class="countdown__sep" aria-hidden="true"></div>
+          <div class="countdown__col">
+            <span id="cnt-hours">--</span><small>시간</small>
+          </div>
+          <div class="countdown__sep" aria-hidden="true"></div>
+          <div class="countdown__col">
+            <span id="cnt-mins">--</span><small>분</small>
+          </div>
+          <div class="countdown__sep" aria-hidden="true"></div>
+          <div class="countdown__col">
+            <span id="cnt-secs">--</span><small>초</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         ④ LOCATION / 오시는 길
+    ════════════════════════════════════════════ -->
+    <section id="map" class="section section--off">
+      <div class="container reveal">
+        <header class="section-head">
+          <span class="section-tag">Location</span>
+          <h2>오시는 길</h2>
+        </header>
+
+        <div class="venue-card">
+          <p class="venue-name">더채플앳논현 6F 라포레홀</p>
+          <p class="venue-addr">서울특별시 강남구 논현로 549</p>
+        </div>
+
+        <!-- 카카오 지도 미리보기 (반응형) -->
+        <div class="kakao-map-wrap">
+          <a
+            href="https://kko.to/ddpaWjQcjI"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="카카오맵에서 더채플앳논현 보기"
+          >
+            <img
+              class="kakao-map__img"
+              src="https://t1.daumcdn.net/roughmap/imgmap/f2021a6e66e2ee3028b75bbf4020fc6535fdee67e7ce5f59ea9b1294f2d9be01"
+              alt="더채플앳논현 지도"
+            />
+          </a>
+        </div>
+
+        <div class="map-btns">
+          <a
+            href="https://kko.to/ddpaWjQcjI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--kakao"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 3C6.477 3 2 6.477 2 11c0 2.892 1.569 5.426 3.938 6.977L5 21l3.712-1.857A10.94 10.94 0 0 0 12 19c5.523 0 10-3.477 10-8s-4.477-8-10-8Z"
+                fill="#3A1D1D"
+              />
+            </svg>
+            카카오맵
+          </a>
+          <a
+            href="https://naver.me/xtgpXRJ4"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--naver"
+          >
+            <span class="naver-n" aria-hidden="true">N</span>
+            네이버 지도
+          </a>
+        </div>
+
+        <ul class="transport">
+          <li class="transport__row">
+            <span class="transport__label"
+              ><i data-lucide="train-front"></i>지하철</span
+            >
+            <div class="transport__lines">
+              <span class="transport__info">
+                <span class="subway-9">언주역(9호선)</span> 7번 출구 정면 도보
+                150m
+              </span>
+              <span class="transport__info">
+                <span class="subway-2">역삼역(2호선)</span> 6번 출구 좌측 도보
+                450m
+              </span>
+            </div>
+          </li>
+          <li class="transport__row">
+            <span class="transport__label"><i data-lucide="bus"></i>버스</span>
+            <span class="transport__info"
+              ><span class="bus-type">간선</span> 147·464
+              <span class="bus-type">지선</span> 4211
+              <span class="bus-type">광역</span> 3600·9600 <br />
+              차병원(역삼방면) 하차</span
+            >
+          </li>
+          <li class="transport__row">
+            <span class="transport__label"
+              ><i data-lucide="car"></i>자가용</span
+            >
+            <span class="transport__info"
+              >주차장 이용 시 발렛 서비스 및 셔틀버스가 운행됩니다.(150분
+              무로)</span
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         ⑤ SHUTTLE BUS / 버스 대절 안내
+    ════════════════════════════════════════════ -->
+    <section id="bus" class="section section--stone">
+      <div class="container reveal">
+        <header class="section-head">
+          <span class="section-tag">Shuttle Bus</span>
+          <h2>버스 대절 안내</h2>
+        </header>
+
+        <p class="bus__intro">
+          거제에서 출발하는 전세버스를 운행합니다.<br />
+          아래 탑승 장소 중 편하신 곳을 이용해 주세요.
+        </p>
+
+        <div class="bus__card">
+          <!-- 헤더: 출발지 → 도착지 -->
+          <div class="bus__card-head">
+            <strong>거제 출발</strong>
+            <span class="bus__dest">
+              <i data-lucide="arrow-right"></i>더채플앳논현
+            </span>
+          </div>
+
+          <!-- 탑승 정류장 3곳 (타임라인) -->
+          <ul class="bus__stops">
+            <li class="bus__stop">
+              <div class="bus__stop-marker">01</div>
+              <div class="bus__stop-body">
+                <strong>한화오션플라자 야외 주차장</strong>
+                <span>오전 08시 30분 출발</span>
+              </div>
+            </li>
+            <li class="bus__stop">
+              <div class="bus__stop-marker">02</div>
+              <div class="bus__stop-body">
+                <strong>옥포 소방서</strong>
+                <span>오전 08시 40분 출발</span>
+              </div>
+            </li>
+            <li class="bus__stop">
+              <div class="bus__stop-marker">03</div>
+              <div class="bus__stop-body">
+                <strong>고현 육교 버스 정류장</strong>
+                <span>오전 08시 50분 출발</span>
+              </div>
+            </li>
+          </ul>
+
+          <p class="bus__return">
+            <strong>귀가</strong> 식사 후 오후 4시 30분 출발
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- ════════════════════════════════════════════
+         ③ SCROLL IMAGE — 풀블리드 패럴랙스 사진
+    ════════════════════════════════════════════ -->
+    <section id="scroll_Img" class="scroll-img-section">
+      <div class="scroll-img__wrap">
+        <img
+          src="src/img/IMG_8517.jpg?v=20260606"
+          alt="웨딩 사진"
+          class="scroll-img__photo"
+          id="scroll-img-photo"
+          loading="lazy"
+        />
+      </div>
+      <!-- 상단/하단 vignette overlay -->
+      <div class="scroll-img__vignette" aria-hidden="true"></div>
+    </section>
+    <!-- ════════════════════════════════════════════
+         ⑥ ACCOUNT / 마음 전하실 곳
+    ════════════════════════════════════════════ -->
+    <section id="account" class="section section--blush">
+      <div class="container reveal">
+        <header class="section-head">
+          <span class="section-tag">Account</span>
+          <h2>마음 전하실 곳</h2>
+        </header>
+
+        <p class="account__intro">
+          축하의 마음을 전해주시려는 분들을 위해<br />계좌번호를 안내드립니다.
+        </p>
+
+        <!-- 신랑 측 아코디언 -->
+        <div class="accordion" id="acc-groom">
+          <button
+            class="accordion__btn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="acc-groom-body"
+          >
+            <span>신랑 측</span>
+            <i data-lucide="plus" class="accordion__icon"></i>
+          </button>
+          <div class="accordion__body" id="acc-groom-body" role="region">
+            <div class="account__item">
+              <div class="account__meta">
+                <span class="account__rel">아버지</span>
+                <span class="account__name">김택명</span>
+                <span class="account__bank"
+                  >KB국민은행 &nbsp;·&nbsp; 859225-91-123766</span
+                >
+              </div>
+              <button
+                class="copy-btn"
+                type="button"
+                data-copy="85922591123766"
+                aria-label="계좌번호 복사"
+              >
+                <i data-lucide="copy"></i><span>복사</span>
+              </button>
+            </div>
+            <div class="account__item">
+              <div class="account__meta">
+                <span class="account__rel">어머니</span>
+                <span class="account__name">곽미희</span>
+                <span class="account__bank"
+                  >KB국민은행 &nbsp;·&nbsp; 859225-95-116395</span
+                >
+              </div>
+              <button
+                class="copy-btn"
+                type="button"
+                data-copy="85922595116395"
+                aria-label="계좌번호 복사"
+              >
+                <i data-lucide="copy"></i><span>복사</span>
+              </button>
+            </div>
+            <div class="account__item">
+              <div class="account__meta">
+                <span class="account__rel">신랑</span>
+                <span class="account__name">김종학</span>
+                <span class="account__bank"
+                  >농협 &nbsp;·&nbsp; 302-1857-8522-11</span
+                >
+              </div>
+              <button
+                class="copy-btn"
+                type="button"
+                data-copy="3021857852211"
+                aria-label="계좌번호 복사"
+              >
+                <i data-lucide="copy"></i><span>복사</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 신부 측 아코디언 -->
+        <div class="accordion" id="acc-bride">
+          <button
+            class="accordion__btn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="acc-bride-body"
+          >
+            <span>신부 측</span>
+            <i data-lucide="plus" class="accordion__icon"></i>
+          </button>
+          <div class="accordion__body" id="acc-bride-body" role="region">
+            <div class="account__item">
+              <div class="account__meta">
+                <span class="account__rel">아버지</span>
+                <span class="account__name">임성순</span>
+                <span class="account__bank"
+                  >농협 &nbsp;·&nbsp; 331015-51-007211</span
+                >
+              </div>
+              <button
+                class="copy-btn"
+                type="button"
+                data-copy="33101551007211"
+                aria-label="계좌번호 복사"
+              >
+                <i data-lucide="copy"></i><span>복사</span>
+              </button>
+            </div>
+            <div class="account__item">
+              <div class="account__meta">
+                <span class="account__rel">어머니</span>
+                <span class="account__name">안정숙</span>
+                <span class="account__bank"
+                  >KB국민은행 &nbsp;·&nbsp; 427925-94-120145</span
+                >
+              </div>
+              <button
+                class="copy-btn"
+                type="button"
+                data-copy="42792594120145"
+                aria-label="계좌번호 복사"
+              >
+                <i data-lucide="copy"></i><span>복사</span>
+              </button>
+            </div>
+            <div class="account__item">
+              <div class="account__meta">
+                <span class="account__rel">신부</span>
+                <span class="account__name">임소현</span>
+                <span class="account__bank"
+                  >농협 &nbsp;·&nbsp; 302-2103-6189-51</span
+                >
+              </div>
+              <button
+                class="copy-btn"
+                type="button"
+                data-copy="3022103618951"
+                aria-label="계좌번호 복사"
+              >
+                <i data-lucide="copy"></i><span>복사</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         ⑦ GUESTBOOK / 방명록
+    ════════════════════════════════════════════ -->
+    <section id="guestbook" class="section section--cool">
+      <div class="container reveal">
+        <header class="section-head">
+          <span class="section-tag">Guestbook</span>
+          <h2>방명록</h2>
+        </header>
+
+        <form id="guestbook-form" class="gb-form" novalidate>
+          <div class="gb-form__row">
+            <div class="field">
+              <input
+                type="text"
+                id="gb-name"
+                name="name"
+                placeholder=" "
+                maxlength="20"
+                required
+                autocomplete="name"
+              />
+              <label for="gb-name">이름</label>
+            </div>
+            <div class="field">
+              <input
+                type="password"
+                id="gb-password"
+                name="password"
+                placeholder=" "
+                maxlength="10"
+                required
+              />
+              <label for="gb-password">비밀번호 (삭제용)</label>
+            </div>
+          </div>
+          <div class="field">
+            <textarea
+              id="gb-message"
+              name="message"
+              placeholder=" "
+              maxlength="200"
+              rows="3"
+              required
+            ></textarea>
+            <label for="gb-message">축하 메시지</label>
+            <span class="field__count" id="gb-count">0 / 200</span>
+          </div>
+          <!-- 허니팟: 봇 방지 숨김 필드 — 사람은 이 입력란을 보지 못함 -->
+          <input
+            type="text"
+            name="website"
+            class="honeypot"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <div class="gb-form__actions">
+            <button type="submit" class="btn btn--dark">남기기</button>
+          </div>
+        </form>
+
+        <div class="gb-list" id="guestbook-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         SCROLL IMAGE 2 — 방명록 · 푸터 사이 풀블리드
+    ════════════════════════════════════════════ -->
+    <section id="scroll_Img2" class="scroll-img-section">
+      <div class="scroll-img__wrap">
+        <img
+          src="src/img/IMG_8518.jpg?v=20260606"
+          alt="웨딩 사진"
+          class="scroll-img__photo"
+          id="scroll-img-photo2"
+          loading="lazy"
+        />
+      </div>
+      <!-- 상단/하단 vignette overlay -->
+      <div class="scroll-img__vignette" aria-hidden="true"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════════ -->
+    <footer class="footer">
+      <p class="footer__couple">김종학 <em>&amp;</em> 임소현</p>
+      <p class="footer__date">2026. 10. 04</p>
+      <div class="footer__contact">
+        <a href="tel:01042308600"><i data-lucide="phone"></i>신랑에게 연락</a>
+        <a href="tel:01021232354"><i data-lucide="phone"></i>신부에게 연락</a>
+      </div>
+    </footer>
+
+    <!-- ════════════════════════════════════════════
+         ④ RSVP 팝업 모달 (페이지 진입 시 자동 오픈)
+    ════════════════════════════════════════════ -->
+    <div
+      class="rsvp-modal"
+      id="rsvp-modal"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="rsvp-modal-title"
+    >
+      <div class="rsvp-modal__backdrop" id="rsvp-modal-backdrop"></div>
+      <div class="rsvp-modal__box">
+        <button
+          class="rsvp-modal__close"
+          id="rsvp-modal-close"
+          type="button"
+          aria-label="닫기"
+        >
+          <i data-lucide="x"></i>
+        </button>
+
+        <div class="rsvp-modal__head">
+          <span class="section-tag">RSVP</span>
+          <h2 id="rsvp-modal-title">참석 의사 표시</h2>
+        </div>
+
+        <form id="rsvp-m-form" class="rsvp-form" novalidate>
+          <div class="field">
+            <input
+              type="text"
+              id="rsvp-m-name"
+              name="name"
+              placeholder=" "
+              required
+              autocomplete="name"
+            />
+            <label for="rsvp-m-name">이름 <span class="req">*</span></label>
+          </div>
+
+          <fieldset class="fieldset">
+            <legend>참석 여부 <span class="req">*</span></legend>
+            <div class="chip-group">
+              <label class="chip"
+                ><input
+                  type="radio"
+                  name="m-attendance"
+                  value="참석"
+                  required
+                /><span>참석할게요</span></label
+              >
+              <label class="chip"
+                ><input type="radio" name="m-attendance" value="불참" /><span
+                  >참석이 어려워요</span
+                ></label
+              >
+            </div>
+          </fieldset>
+
+          <fieldset class="fieldset">
+            <legend>식사 여부</legend>
+            <div class="chip-group">
+              <label class="chip"
+                ><input type="radio" name="m-meal" value="식사" /><span
+                  >식사 할게요</span
+                ></label
+              >
+              <label class="chip"
+                ><input type="radio" name="m-meal" value="패스" /><span
+                  >괜찮아요</span
+                ></label
+              >
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <select id="rsvp-m-guests" name="guests">
+              <option value="1">본인만 (1명)</option>
+              <option value="2">+1명 (2명)</option>
+              <option value="3">+2명 (3명)</option>
+              <option value="4">+3명 이상</option>
+            </select>
+            <label for="rsvp-m-guests">동반 인원</label>
+          </div>
+
+          <!-- 허니팟: 봇 방지 숨김 필드 -->
+          <input
+            type="text"
+            name="website"
+            class="honeypot"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <button
+            type="submit"
+            class="btn btn--dark btn--full"
+            id="rsvp-m-submit"
+          >
+            참석 의사 전달하기
+          </button>
+          <p class="rsvp-form__result" id="rsvp-m-result" role="alert"></p>
+        </form>
+
+        <button type="button" class="rsvp-modal__skip" id="rsvp-modal-skip">
+          나중에 할게요
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast 알림 -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- 비밀번호 확인 모달 (방명록 삭제용) -->
+    <div
+      class="pw-modal"
+      id="pw-modal"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pw-modal-title"
+    >
+      <div class="pw-modal__box">
+        <h3 id="pw-modal-title">비밀번호 확인</h3>
+        <div class="field">
+          <input
+            type="password"
+            id="pw-modal-input"
+            placeholder=" "
+            maxlength="10"
+            autocomplete="off"
+          />
+          <label for="pw-modal-input">비밀번호</label>
+        </div>
+        <div class="pw-modal__actions">
+          <button class="btn btn--ghost" id="pw-modal-cancel">취소</button>
+          <button class="btn btn--dark" id="pw-modal-confirm">삭제</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js?v=20260606"></script>
+  </body>
+</html>
