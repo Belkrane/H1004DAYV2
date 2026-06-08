@@ -615,7 +615,95 @@
     </section>
 
     <!-- ════════════════════════════════════════════
-         ⑦ GUESTBOOK / 방명록
+         ⑦ RSVP / 참석 의사 표시
+    ════════════════════════════════════════════ -->
+    <section id="rsvp" class="section section--off">
+      <div class="container reveal">
+        <header class="section-head">
+          <span class="section-tag">RSVP</span>
+          <h2>참석 의사 표시</h2>
+        </header>
+
+        <form id="rsvp-s-form" class="rsvp-form" novalidate>
+          <div class="field">
+            <input
+              type="text"
+              id="rsvp-s-name"
+              name="name"
+              placeholder=" "
+              required
+              autocomplete="name"
+            />
+            <label for="rsvp-s-name">이름 <span class="req">*</span></label>
+          </div>
+
+          <fieldset class="fieldset">
+            <legend>참석 여부 <span class="req">*</span></legend>
+            <div class="chip-group">
+              <label class="chip"
+                ><input
+                  type="radio"
+                  name="s-attendance"
+                  value="참석"
+                  required
+                /><span>참석할게요</span></label
+              >
+              <label class="chip"
+                ><input type="radio" name="s-attendance" value="불참" /><span
+                  >참석이 어려워요</span
+                ></label
+              >
+            </div>
+          </fieldset>
+
+          <fieldset class="fieldset">
+            <legend>식사 여부</legend>
+            <div class="chip-group">
+              <label class="chip"
+                ><input type="radio" name="s-meal" value="식사" /><span
+                  >식사 할게요</span
+                ></label
+              >
+              <label class="chip"
+                ><input type="radio" name="s-meal" value="패스" /><span
+                  >괜찮아요</span
+                ></label
+              >
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <select id="rsvp-s-guests" name="guests">
+              <option value="1">본인만 (1명)</option>
+              <option value="2">+1명 (2명)</option>
+              <option value="3">+2명 (3명)</option>
+              <option value="4">+3명 이상</option>
+            </select>
+            <label for="rsvp-s-guests">동반 인원</label>
+          </div>
+
+          <input
+            type="text"
+            name="website"
+            class="honeypot"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <button
+            type="submit"
+            class="btn btn--dark btn--full"
+            id="rsvp-s-submit"
+          >
+            참석 의사 전달하기
+          </button>
+          <p class="rsvp-form__result" id="rsvp-s-result" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+         ⑧ GUESTBOOK / 방명록
     ════════════════════════════════════════════ -->
     <section id="guestbook" class="section section--cool">
       <div class="container reveal">
@@ -708,116 +796,6 @@
         <a href="tel:01021232354"><i data-lucide="phone"></i>신부에게 연락</a>
       </div>
     </footer>
-
-    <!-- ════════════════════════════════════════════
-         ④ RSVP 팝업 모달 (페이지 진입 시 자동 오픈)
-    ════════════════════════════════════════════ -->
-    <div
-      class="rsvp-modal"
-      id="rsvp-modal"
-      hidden
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="rsvp-modal-title"
-    >
-      <div class="rsvp-modal__backdrop" id="rsvp-modal-backdrop"></div>
-      <div class="rsvp-modal__box">
-        <button
-          class="rsvp-modal__close"
-          id="rsvp-modal-close"
-          type="button"
-          aria-label="닫기"
-        >
-          <i data-lucide="x"></i>
-        </button>
-
-        <div class="rsvp-modal__head">
-          <span class="section-tag">RSVP</span>
-          <h2 id="rsvp-modal-title">참석 의사 표시</h2>
-        </div>
-
-        <form id="rsvp-m-form" class="rsvp-form" novalidate>
-          <div class="field">
-            <input
-              type="text"
-              id="rsvp-m-name"
-              name="name"
-              placeholder=" "
-              required
-              autocomplete="name"
-            />
-            <label for="rsvp-m-name">이름 <span class="req">*</span></label>
-          </div>
-
-          <fieldset class="fieldset">
-            <legend>참석 여부 <span class="req">*</span></legend>
-            <div class="chip-group">
-              <label class="chip"
-                ><input
-                  type="radio"
-                  name="m-attendance"
-                  value="참석"
-                  required
-                /><span>참석할게요</span></label
-              >
-              <label class="chip"
-                ><input type="radio" name="m-attendance" value="불참" /><span
-                  >참석이 어려워요</span
-                ></label
-              >
-            </div>
-          </fieldset>
-
-          <fieldset class="fieldset">
-            <legend>식사 여부</legend>
-            <div class="chip-group">
-              <label class="chip"
-                ><input type="radio" name="m-meal" value="식사" /><span
-                  >식사 할게요</span
-                ></label
-              >
-              <label class="chip"
-                ><input type="radio" name="m-meal" value="패스" /><span
-                  >괜찮아요</span
-                ></label
-              >
-            </div>
-          </fieldset>
-
-          <div class="field">
-            <select id="rsvp-m-guests" name="guests">
-              <option value="1">본인만 (1명)</option>
-              <option value="2">+1명 (2명)</option>
-              <option value="3">+2명 (3명)</option>
-              <option value="4">+3명 이상</option>
-            </select>
-            <label for="rsvp-m-guests">동반 인원</label>
-          </div>
-
-          <!-- 허니팟: 봇 방지 숨김 필드 -->
-          <input
-            type="text"
-            name="website"
-            class="honeypot"
-            tabindex="-1"
-            autocomplete="off"
-            aria-hidden="true"
-          />
-          <button
-            type="submit"
-            class="btn btn--dark btn--full"
-            id="rsvp-m-submit"
-          >
-            참석 의사 전달하기
-          </button>
-          <p class="rsvp-form__result" id="rsvp-m-result" role="alert"></p>
-        </form>
-
-        <button type="button" class="rsvp-modal__skip" id="rsvp-modal-skip">
-          나중에 할게요
-        </button>
-      </div>
-    </div>
 
     <!-- Toast 알림 -->
     <div class="toast" id="toast" role="status" aria-live="polite"></div>

@@ -1011,62 +1011,27 @@ function initIcons() {
   });
 })();
 
-/* ── RSVP MODAL (auto-open on page load) ─────────────────────
-   Opens 400 ms after page load so the page has time to paint.
-   Closes on ✕ button / backdrop click / Esc / skip link.
-   On successful Formspree submit, auto-closes after 2 s.
-   ─────────────────────────────────────────────────────────── */
-(function initRSVPModal() {
-  var modal = document.getElementById("rsvp-modal");
-  var backdrop = document.getElementById("rsvp-modal-backdrop");
-  var btnClose = document.getElementById("rsvp-modal-close");
-  var btnSkip = document.getElementById("rsvp-modal-skip");
-  var form = document.getElementById("rsvp-m-form");
-  var result = document.getElementById("rsvp-m-result");
-  var btn = document.getElementById("rsvp-m-submit");
-  if (!modal) return;
+/* ── RSVP SECTION FORM ───────────────────────────────────────*/
+(function initRSVPSection() {
+  var form = document.getElementById("rsvp-s-form");
+  var result = document.getElementById("rsvp-s-result");
+  var btn = document.getElementById("rsvp-s-submit");
+  if (!form) return;
 
-  function openModal() {
-    modal.removeAttribute("hidden");
-    document.body.style.overflow = "hidden";
-    spamOpen("rsvp"); /* 모달 열린 시각 기록 */
-    /* Ensure lucide icons inside modal are rendered */
-    if (window.lucide && typeof lucide.createIcons === "function") {
-      lucide.createIcons({ nodes: [modal] });
-    }
-  }
-
-  function closeModal() {
-    modal.setAttribute("hidden", "");
-    document.body.style.overflow = "";
-  }
-
-  /* Auto-open: 400 ms delay lets the page render first */
-  setTimeout(openModal, 400);
-
-  /* Close triggers */
-  if (btnClose) btnClose.addEventListener("click", closeModal);
-  if (btnSkip) btnSkip.addEventListener("click", closeModal);
-  if (backdrop) backdrop.addEventListener("click", closeModal);
-  document.addEventListener("keydown", function (e) {
-    if (!modal.hasAttribute("hidden") && e.key === "Escape") closeModal();
+  ["focusin", "input"].forEach(function (ev) {
+    form.addEventListener(ev, function () { spamOpen("rsvp-s"); }, { once: true });
   });
 
-  /* Form submit */
-  if (!form) return;
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var nameEl = document.getElementById("rsvp-m-name");
-    var att = form.querySelector('input[name="m-attendance"]:checked');
+    var nameEl = document.getElementById("rsvp-s-name");
+    var att = form.querySelector('input[name="s-attendance"]:checked');
     var hpEl = form.querySelector('[name="website"]');
     var hpVal = hpEl ? hpEl.value : "";
 
-    /* 필수 입력 검사 */
     if (!nameEl || !nameEl.value.trim()) {
       toast("이름을 입력해주세요.");
-      if (nameEl) {
-        nameEl.focus();
-      }
+      if (nameEl) nameEl.focus();
       return;
     }
     if (!att) {
@@ -1074,28 +1039,11 @@ function initIcons() {
       return;
     }
 
-    /* 스팸 검사 */
-    var spamErr = spamCheck("rsvp", hpVal, nameEl.value);
-    if (spamErr) {
-      toast(spamErr);
-      return;
-    }
+    var spamErr = spamCheck("rsvp-s", hpVal, nameEl.value);
+    if (spamErr) { toast(spamErr); return; }
 
-    /* sheetsUrl 미설정 = 데모 모드 */
-    if (!CONFIG.sheetsUrl) {
-      if (result) {
-        result.textContent =
-          "(데모) 전달 완료! Apps Script URL을 입력해주세요.";
-        result.className = "rsvp-form__result ok";
-      }
-      toast("✓ 전달 완료 (데모 모드)");
-      spamMark("rsvp");
-      setTimeout(closeModal, 1800);
-      return;
-    }
-
-    var mealEl = form.querySelector('input[name="m-meal"]:checked');
-    var guestsEl = document.getElementById("rsvp-m-guests");
+    var mealEl = form.querySelector('input[name="s-meal"]:checked');
+    var guestsEl = document.getElementById("rsvp-s-guests");
 
     btn.disabled = true;
     btn.textContent = "전송 중…";
@@ -1110,20 +1058,17 @@ function initIcons() {
         website: hpVal,
       },
       function () {
-        /* 성공 */
         if (result) {
           result.textContent = "참석 의사가 전달되었습니다. 감사합니다.";
           result.className = "rsvp-form__result ok";
         }
         toast("✓ 전달 완료!");
         form.reset();
-        spamMark("rsvp");
+        spamMark("rsvp-s");
         btn.disabled = false;
         btn.textContent = "참석 의사 전달하기";
-        setTimeout(closeModal, 2000);
       },
       function (errMsg) {
-        /* 실패 */
         if (result) {
           result.textContent = errMsg || "전송 실패. 다시 시도해주세요.";
           result.className = "rsvp-form__result err";
